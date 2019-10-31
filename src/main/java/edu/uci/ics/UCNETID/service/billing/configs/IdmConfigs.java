@@ -13,7 +13,7 @@ public class IdmConfigs {
     private final String DEFAULT_SCHEME = "http://";
     private final String DEFAULT_HOSTNAME = "0.0.0.0";
     private final int    DEFAULT_PORT = 6243;
-    private final String DEFAULT_PATH = "/api/movies";
+    private final String DEFAULT_PATH = "/api/idm";
     private final String DEFAULT_PRIVILEGE = "/privilege";
 
     // IDM configs

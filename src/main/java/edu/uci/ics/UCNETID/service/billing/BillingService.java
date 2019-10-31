@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import edu.uci.ics.UCNETID.service.billing.configs.ConfigsModel;
 import edu.uci.ics.UCNETID.service.billing.configs.IdmConfigs;
+import edu.uci.ics.UCNETID.service.billing.configs.MoviesConfigs;
 import edu.uci.ics.UCNETID.service.billing.configs.ServiceConfigs;
 import edu.uci.ics.UCNETID.service.billing.logger.ServiceLogger;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -27,6 +28,7 @@ public class BillingService {
     public static BillingService service;
     private static ServiceConfigs serviceConfigs;
     private static IdmConfigs idmConfigs;
+    private static MoviesConfigs moviesConfigs;
 
     private static Connection con = null;
 
@@ -47,6 +49,7 @@ public class BillingService {
         ServiceLogger.LOGGER.config("Starting service...");
         serviceConfigs.currentConfigs();
         idmConfigs.currentConfigs();
+        moviesConfigs.currentConfigs();
 
         // Create a connection to the database
         connectToDatabase();
@@ -113,11 +116,13 @@ public class BillingService {
             ConfigsModel configs = loadConfigs(configFile);
             serviceConfigs = new ServiceConfigs(configs);
             idmConfigs = new IdmConfigs(configs);
+            moviesConfigs = new MoviesConfigs(configs);
             System.err.println("Configuration file successfully loaded.");
         } catch (NullPointerException e) {
             System.err.println("Config file not found. Using default values.");
             serviceConfigs = new ServiceConfigs();
             idmConfigs = new IdmConfigs();
+            moviesConfigs = new MoviesConfigs();
         }
     }
 
@@ -205,5 +210,9 @@ public class BillingService {
 
     public static IdmConfigs getIdmConfigs() {
         return idmConfigs;
+    }
+
+    public static MoviesConfigs getMoviesConfigs() {
+        return moviesConfigs;
     }
 }

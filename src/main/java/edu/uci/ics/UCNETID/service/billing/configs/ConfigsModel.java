@@ -8,6 +8,8 @@ public class ConfigsModel {
     private Map<String,String> databaseConfig;
     private Map<String,String> idmConfig;
     private Map<String,String> idmEndpoints;
+    private Map<String, String> moviesConfig;
+    private Map<String, String> moviesEndpoints;
 
     public ConfigsModel() { }
 
@@ -49,5 +51,21 @@ public class ConfigsModel {
 
     public void setIdmEndpoints(Map<String, String> idmEndpoints) {
         this.idmEndpoints = idmEndpoints;
+    }
+
+    public Map<String, String> getMoviesConfig() {
+        return moviesConfig;
+    }
+
+    public void setMoviesConfig(Map<String, String> moviesConfig) {
+        this.moviesConfig = moviesConfig;
+    }
+
+    public Map<String, String> getMoviesEndpoints() {
+        return moviesEndpoints;
+    }
+
+    public void setMoviesEndpoints(Map<String, String> moviesEndpoints) {
+        this.moviesEndpoints = moviesEndpoints;
     }
 }
